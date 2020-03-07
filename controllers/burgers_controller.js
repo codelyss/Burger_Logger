@@ -53,3 +53,27 @@ const updateBurger = (burgerObj, burgerId) => {
     );
   });
 };
+
+// Delete a burger
+const deleteBurger = burgerId => {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      "DELETE FROM burgers WHERE id = ?", [burgerId],
+      (err, burgerdata) => {
+        if (err) {
+          console.log(err);
+          return reject(err);
+        } else if (burgerdata.affectedRows === 0) {
+          return resolve({
+            message: "Couldn't find a burger with that id!",
+            code: 404
+          });
+        }
+
+        resolve({ message: "Burger deleted successfully!", code: 200 });
+      }
+    );
+  });
+};
+
+module.exports = { getBurgers, createBurger, updateBurger, deleteBurger };
