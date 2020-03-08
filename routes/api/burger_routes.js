@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { getBurgers, createBurger, updateBurger, deleteBurger } = require('../../controllers/burger_controller');
+const { getBurgers, createBurger, updateBurger, deleteBurger } = require('../../controllers/burgers_controller');
 
 // create full CRUD routes at `/burgers` (it will eventually become '/api/burgers')
 router.get('/burgers', (req, res) => {
